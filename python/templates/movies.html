@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List 🎞️</title>
+</head>
+<body>
+    <h1>🎬 IMDB Movie List</h1>
+
+    <form method="get" action="/movies">
+        <input type="text" name="search" placeholder="Search by title or director" value="{{ search }}">
+        <input type="text" name="genre" placeholder="Filter by genre" value="{{ genre }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+
+    {% if movies %}
+        <ul>
+        {% for movie in movies %}
+            <li>
+                <strong>{{ movie.Series_Title }}</strong> ({{ movie.Released_Year }}) - 
+                Genre: {{ movie.Genre }} | ⭐ Rating: {{ movie.IMDB_Rating }}<br>
+                Directed by: {{ movie.Director }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found.</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
